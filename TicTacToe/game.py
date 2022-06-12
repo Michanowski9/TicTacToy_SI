@@ -3,6 +3,9 @@ from player import Player
 
 class Game:
     def __init__(self, size, in_row_to_win, default_sign):
+        """size - size of the map,
+        in_row_to_win is number of signs in row to win,
+        default_sign is sign of empty field"""
         self.size = size
         self.in_row_to_win = in_row_to_win
         self.default_sign = default_sign
