@@ -8,9 +8,9 @@ It returns array of values -1, 0, 1.<br/>
 <br/>
 It goes row by row for example:<br/>
 <br/>
-&emsp;&emsp; X | O | _<br/>
+&emsp;&emsp; x | o | _<br/>
 &emsp;&emsp; _ | _ | _<br/>
-&emsp;&emsp; _ | X | _<br/>
+&emsp;&emsp; _ | x | _<br/>
 <br/>
 get_map_array('X') will return:<br/>
 [1 -1 0 0 1 0 0 0 0]<br/>
