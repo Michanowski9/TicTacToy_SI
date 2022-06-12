@@ -39,8 +39,8 @@ class Game:
             return
         print("End of the game. Player " + str(data) + " won.")
 
-    # returns sign of the player who won, or returns default sign if no one won
     def check_game_end(self):
+        """ returns sign of the player who won, or returns default sign if no one won """
         for x in range(self.size - self.in_row_to_win + 1):
             for y in range(self.size):
                 if self.check_horizontal(x, y):
@@ -59,8 +59,8 @@ class Game:
                     return self.default_sign
         return "Draw"
 
-    # returns true if for this point founded full set in horizontal
     def check_horizontal(self, x, y):
+        """returns true if for this point founded full set in horizontal"""
         temp = self.map[x][y]
         if temp == self.default_sign:
             return False
@@ -69,8 +69,8 @@ class Game:
                 return False
         return True
 
-    # returns true if for this point founded full set in vertical
     def check_vertical(self, x, y):
+        """returns true if for this point founded full set in vertical"""
         temp = self.map[x][y]
         if temp == self.default_sign:
             return False
@@ -79,8 +79,8 @@ class Game:
                 return False
         return True
 
-    # returns true if for this point founded full set in slant
     def check_slant(self, x, y):
+        """returns true if for this point founded full set in slant"""
         temp = self.map[x][y]
         if temp == self.default_sign:
             return False
@@ -89,8 +89,8 @@ class Game:
                 return False
         return True
 
-    # if size is greater than 10 indexes will spoil map
     def print_map(self):
+        """if size is greater than 10 indexes will spoil map"""
         print()
         print()
         print("  ", end="")
