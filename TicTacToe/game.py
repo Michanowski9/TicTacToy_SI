@@ -1,5 +1,23 @@
-from player import Player
+import math
+
+from playerAgent import Player
 import numpy as np
+
+
+def convert_index_to_coordinates(index, map_size):
+    col = index % map_size
+    row = index // map_size
+    return col, row
+
+
+def get_possible_moves(map):
+    mapSize = math.sqrt(len(map))
+    result = []
+
+    for i in range(len(map)):
+        if map[i] == 0:
+            result.append(i)
+    return result
 
 
 class Game:
@@ -29,7 +47,7 @@ class Game:
 
     def make_round(self, player):
         self.print_map()
-
+        print("Current move: " + player.get_token())
         col, row = player.make_decision(self.get_map_array(player.get_token()))
         self.map[col][row] = player.get_token()
 

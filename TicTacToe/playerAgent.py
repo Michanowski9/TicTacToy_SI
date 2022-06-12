@@ -2,11 +2,10 @@ import math
 
 
 class Player:
-    def __init__(self, token):
-        self.token = token
+    def __init__(self, my_token):
+        self.my_token = my_token
 
     def make_decision(self, map):
-        print("Current move: " + self.token)
         mapSize = math.sqrt(len(map))
         while True:
             print("Get col:")
@@ -19,4 +18,4 @@ class Player:
             print("Field is not empty, please choose another one")
 
     def get_token(self):
-        return self.token
+        return self.my_token

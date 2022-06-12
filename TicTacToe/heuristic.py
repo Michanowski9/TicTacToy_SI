@@ -1,3 +1,4 @@
 
-def simple_score(map: map, token='x'):
+
+def simple_score(map, in_row_to_win):
     raise NotImplementedError
