@@ -4,10 +4,25 @@ from playerAgent import Player
 import numpy as np
 
 
+def convert_to_map_2d(map):
+    result = []
+    mapSize = int(math.sqrt(len(map)))
+    for row in range(mapSize):
+        temp = []
+        for col in range(mapSize):
+            temp.append(map[col + row * mapSize])
+        result.append(temp)
+    return result
+
+
 def convert_index_to_coordinates(index, map_size):
     col = index % map_size
     row = index // map_size
     return col, row
+
+
+def convert_coordinates_to_index(col, row, map_size):
+    return int(row * map_size + col)
 
 
 def get_possible_moves(map):
@@ -60,6 +75,7 @@ class Game:
         if data == self.default_token:
             return
         if data == "Draw":
+            self.print_map()
             print("End of the game. Draw")
             return
         self.print_map()
@@ -95,7 +111,11 @@ class Game:
                     return self.map[x][y]
         for x in range(self.size - self.in_row_to_win + 1):
             for y in range(self.size - self.in_row_to_win + 1):
-                if self.check_slant(x, y):
+                if self.check_slant_right(x, y):
+                    return self.map[x][y]
+        for x in range(self.in_row_to_win - 1, self.size):
+            for y in range(self.size - self.in_row_to_win + 1):
+                if self.check_slant_left(x, y):
                     return self.map[x][y]
         for x in range(self.size):
             for y in range(self.size):
@@ -123,13 +143,23 @@ class Game:
                 return False
         return True
 
-    def check_slant(self, x, y):
+    def check_slant_right(self, x, y):
         """returns true if for this point founded full set in slant"""
         temp = self.map[x][y]
         if temp == self.default_token:
             return False
         for i in range(self.in_row_to_win):
             if temp != self.map[x + i][y + i]:
+                return False
+        return True
+
+    def check_slant_left(self, x, y):
+        """returns true if for this point founded full set in slant"""
+        temp = self.map[x][y]
+        if temp == self.default_token:
+            return False
+        for i in range(self.in_row_to_win):
+            if temp != self.map[x - i][y + i]:
                 return False
         return True
 
