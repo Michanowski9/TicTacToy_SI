@@ -21,32 +21,30 @@ class Game:
 
     def main_loop(self):
         while True:
-            self.print_map()
-            self.player1.make_move(self.map, self.default_token)
-            result = self.check_game_end()
-            self.print_result(result)
-            if result != self.default_token:
+            if self.make_round(self.player1):
                 break
 
-            # show values for player 1
-            print(self.get_map_array(self.player1.get_token()))
-
-            self.print_map()
-            self.player2.make_move(self.map, self.default_token)
-            result = self.check_game_end()
-            self.print_result(result)
-            if result != self.default_token:
+            if self.make_round(self.player2):
                 break
 
-            # show values for player 2
-            print(self.get_map_array(self.player2.get_token()))
+    def make_round(self, player):
+        self.print_map()
 
-    def print_result(self, data):
+        col, row = player.make_decision(self.get_map_array(player.get_token()))
+        self.map[col][row] = player.get_token()
+
+        result = self.check_game_end()
+        self.print_result_if_end(result)
+        if result != self.default_token:
+            return 'END'
+
+    def print_result_if_end(self, data):
         if data == self.default_token:
             return
         if data == "Draw":
             print("End of the game. Draw")
             return
+        self.print_map()
         print("End of the game. Player " + str(data) + " won.")
 
     def get_map_array(self, token):
