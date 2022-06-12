@@ -5,7 +5,7 @@ class Player:
     def __init__(self, token):
         self.token = token
 
-    def make_move(self, map):
+    def make_decision(self, map):
         print("Current move: " + self.token)
         mapSize = math.sqrt(len(map))
         while True:

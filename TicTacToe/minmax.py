@@ -8,7 +8,7 @@ class MinMaxAgent(Player):
         self.depth = depth
         self.heuristic_fun = heuristic_fun
 
-    def make_move(self, map):
+    def make_decision(self, map):
         raise NotImplementedError
 
 

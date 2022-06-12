@@ -30,7 +30,7 @@ class Game:
     def make_round(self, player):
         self.print_map()
 
-        col, row = player.make_move(self.get_map_array(player.get_token()))
+        col, row = player.make_decision(self.get_map_array(player.get_token()))
         self.map[col][row] = player.get_token()
 
         result = self.check_game_end()
