@@ -4,7 +4,7 @@ Function get_map_array is needed in neuron network. <br/>
 It returns array of values -1, 0, 1.<br/>
 &emsp;&emsp;-1 - on this field is your opponent<br/>
 &emsp;&emsp;0 - is empty<br/>
-&emsp;&emsp;1 - on this field is your sign<br/>
+&emsp;&emsp;1 - on this field is your token<br/>
 <br/>
 It goes row by row for example:<br/>
 <br/>
