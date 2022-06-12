@@ -9,7 +9,7 @@ It returns array of values -1, 0, 1.<br/>
 It goes row by row for example:<br/>
 <br/>
 &emsp;&emsp; X | O | _<br/>
-&emsp; _ | _ | _<br/>
+&emsp;&emsp; _ | _ | _<br/>
 &emsp;&emsp; _ | X | _<br/>
 <br/>
 get_map_array('X') will return:<br/>
