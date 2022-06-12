@@ -2,10 +2,10 @@
 
 Function get_map_array is needed in neuron network. <br/>
 It returns array of values -1, 0, 1.<br/>
-	-1 - on this field is your opponent<br/>
-	0 - is empty<br/>
-	1 - on this field is your sign<br/>
-	<br/>
+&emsp;-1 - on this field is your opponent<br/>
+&emsp;0 - is empty<br/>
+&emsp;1 - on this field is your sign<br/>
+&emsp;<br/>
 It goes row by row for example:<br/>
 <br/>
 X | O | _<br/>
