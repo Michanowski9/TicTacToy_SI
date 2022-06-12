@@ -1,4 +1,5 @@
 from player import Player
+import numpy as np
 
 
 class Game:
@@ -27,12 +28,19 @@ class Game:
             if result != self.default_sign:
                 break
 
+            # show values for player 1
+            print(self.get_map_array(self.player1.get_sign()))
+
             self.print_map()
             self.player2.make_move(self.map, self.default_sign)
             result = self.check_game_end()
             self.print_result(result)
             if result != self.default_sign:
                 break
+
+            # show values for player 2
+            print(self.get_map_array(self.player2.get_sign()))
+
 
     def print_result(self, data):
         if data == self.default_sign:
@@ -41,6 +49,23 @@ class Game:
             print("End of the game. Draw")
             return
         print("End of the game. Player " + str(data) + " won.")
+
+    def get_map_array(self, sign):
+        """returns map array row by row as a numpy.array"""
+        result = []
+        for index in range(self.size * self.size):
+            value = self.get_value(self.map[index % self.size][index // self.size], sign)
+            result.append(value)
+        return np.array(result)
+
+    def get_value(self, element, sign):
+        """returns 1 if player (sign) is on field, 0 if field is empty, -1 if opponent is on field"""
+        if element == sign:
+            return 1
+        elif element == self.default_sign:
+            return 0
+        else:
+            return -1
 
     # checking game status
     def check_game_end(self):
