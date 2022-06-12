@@ -42,6 +42,7 @@ class Game:
             return
         print("End of the game. Player " + str(data) + " won.")
 
+    # checking game status
     def check_game_end(self):
         """ returns sign of the player who won, or returns default sign if no one won """
         for x in range(self.size - self.in_row_to_win + 1):
@@ -92,6 +93,7 @@ class Game:
                 return False
         return True
 
+    # drawing map
     def print_map(self):
         """if size is greater than 10 indexes will spoil map"""
         print()
