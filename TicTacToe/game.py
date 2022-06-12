@@ -3,14 +3,14 @@ import numpy as np
 
 
 class Game:
-    def __init__(self, size, in_row_to_win, default_sign):
+    def __init__(self, size, in_row_to_win, default_token):
         """size - size of the map,
-        in_row_to_win is number of signs in row to win,
-        default_sign is sign of empty field"""
+        in_row_to_win is number of tokens in row to win,
+        default_token is token of empty field"""
         self.size = size
         self.in_row_to_win = in_row_to_win
-        self.default_sign = default_sign
-        self.map = [[self.default_sign for x in range(size)] for y in range(size)]
+        self.default_token = default_token
+        self.map = [[self.default_token for x in range(size)] for y in range(size)]
 
         self.player2 = None
         self.player1 = None
@@ -22,54 +22,53 @@ class Game:
     def main_loop(self):
         while True:
             self.print_map()
-            self.player1.make_move(self.map, self.default_sign)
+            self.player1.make_move(self.map, self.default_token)
             result = self.check_game_end()
             self.print_result(result)
-            if result != self.default_sign:
+            if result != self.default_token:
                 break
 
             # show values for player 1
-            print(self.get_map_array(self.player1.get_sign()))
+            print(self.get_map_array(self.player1.get_token()))
 
             self.print_map()
-            self.player2.make_move(self.map, self.default_sign)
+            self.player2.make_move(self.map, self.default_token)
             result = self.check_game_end()
             self.print_result(result)
-            if result != self.default_sign:
+            if result != self.default_token:
                 break
 
             # show values for player 2
-            print(self.get_map_array(self.player2.get_sign()))
-
+            print(self.get_map_array(self.player2.get_token()))
 
     def print_result(self, data):
-        if data == self.default_sign:
+        if data == self.default_token:
             return
         if data == "Draw":
             print("End of the game. Draw")
             return
         print("End of the game. Player " + str(data) + " won.")
 
-    def get_map_array(self, sign):
+    def get_map_array(self, token):
         """returns map array row by row as a numpy.array"""
         result = []
         for index in range(self.size * self.size):
-            value = self.get_value(self.map[index % self.size][index // self.size], sign)
+            value = self.get_value(self.map[index % self.size][index // self.size], token)
             result.append(value)
         return np.array(result)
 
-    def get_value(self, element, sign):
-        """returns 1 if player (sign) is on field, 0 if field is empty, -1 if opponent is on field"""
-        if element == sign:
+    def get_value(self, element, token):
+        """returns 1 if player (token) is on field, 0 if field is empty, -1 if opponent is on field"""
+        if element == token:
             return 1
-        elif element == self.default_sign:
+        elif element == self.default_token:
             return 0
         else:
             return -1
 
     # checking game status
     def check_game_end(self):
-        """ returns sign of the player who won, or returns default sign if no one won """
+        """ returns token of the player who won, or returns default token if no one won """
         for x in range(self.size - self.in_row_to_win + 1):
             for y in range(self.size):
                 if self.check_horizontal(x, y):
@@ -84,14 +83,14 @@ class Game:
                     return self.map[x][y]
         for x in range(self.size):
             for y in range(self.size):
-                if self.map[x][y] == self.default_sign:
-                    return self.default_sign
+                if self.map[x][y] == self.default_token:
+                    return self.default_token
         return "Draw"
 
     def check_horizontal(self, x, y):
         """returns true if for this point founded full set in horizontal"""
         temp = self.map[x][y]
-        if temp == self.default_sign:
+        if temp == self.default_token:
             return False
         for i in range(self.in_row_to_win):
             if temp != self.map[x + i][y]:
@@ -101,7 +100,7 @@ class Game:
     def check_vertical(self, x, y):
         """returns true if for this point founded full set in vertical"""
         temp = self.map[x][y]
-        if temp == self.default_sign:
+        if temp == self.default_token:
             return False
         for i in range(self.in_row_to_win):
             if temp != self.map[x][y + i]:
@@ -111,7 +110,7 @@ class Game:
     def check_slant(self, x, y):
         """returns true if for this point founded full set in slant"""
         temp = self.map[x][y]
-        if temp == self.default_sign:
+        if temp == self.default_token:
             return False
         for i in range(self.in_row_to_win):
             if temp != self.map[x + i][y + i]:
