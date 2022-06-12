@@ -6,15 +6,15 @@ from minmaxAgent import MinMaxAgent
 
 if __name__ == '__main__':
     # start game
-    map_size = 3
-    in_row_to_win = 3
+    map_size = 5
+    in_row_to_win = 4
 
-    # Prepare player 1
+    #       Prepare player 1
     # playerX = Player('X')
-    playerX = MinMaxAgent('O', in_row_to_win)
+    playerX = MinMaxAgent('O', in_row_to_win, 3)
 
-    # Prepare player 2
-    # playerO = Player('O')
+    #      Prepare player 2
+    # playerO = Player('X')
     playerO = RandomAgent("X")
 
     game = Game(map_size, in_row_to_win, ' ')
