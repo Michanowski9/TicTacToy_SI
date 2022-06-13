@@ -25,5 +25,3 @@ if __name__ == '__main__':
     game = Game(map_size, in_row_to_win, ' ')
     game.set_players(playerX, playerO)
     game.main_loop()
-
-

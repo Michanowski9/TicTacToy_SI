@@ -36,7 +36,7 @@ def get_possible_moves(map):
 
 
 class Game:
-    def __init__(self, size, in_row_to_win, default_token):
+    def __init__(self, size, in_row_to_win, default_token, if_print=True):
         """size - size of the map,
         in_row_to_win is number of tokens in row to win,
         default_token is token of empty field"""
@@ -44,9 +44,11 @@ class Game:
         self.in_row_to_win = in_row_to_win
         self.default_token = default_token
         self.map = [[self.default_token for x in range(size)] for y in range(size)]
+        self.result = 0
 
         self.player2 = None
         self.player1 = None
+        self.if_print = if_print
 
     def set_players(self, player1, player2):
         self.player1 = player1
@@ -61,8 +63,9 @@ class Game:
                 break
 
     def make_round(self, player):
-        self.print_map()
-        print("Current move: " + player.get_token())
+        if self.if_print:
+            self.print_map()
+            print("Current move: " + player.get_token())
         col, row = player.make_decision(self.get_map_array(player.get_token()))
         self.map[col][row] = player.get_token()
 
@@ -75,11 +78,17 @@ class Game:
         if data == self.default_token:
             return
         if data == "Draw":
-            self.print_map()
-            print("End of the game. Draw")
+            if self.if_print:
+                self.print_map()
+            self.result = 0
+            if self.if_print:
+                print("End of the game. Draw")
             return
-        self.print_map()
-        print("End of the game. Player " + str(data) + " won.")
+        if self.if_print:
+            self.print_map()
+        self.result = str(data)
+        if self.if_print:
+            print("End of the game. Player " + str(data) + " won.")
 
     def get_map_array(self, token):
         """returns map array row by row as a numpy.array"""
@@ -87,7 +96,8 @@ class Game:
         for index in range(self.size * self.size):
             value = self.get_value(self.map[index % self.size][index // self.size], token)
             result.append(value)
-        return np.array(result)
+        # return np.array(result)
+        return result
 
     def get_value(self, element, token):
         """returns 1 if player (token) is on field, 0 if field is empty, -1 if opponent is on field"""
