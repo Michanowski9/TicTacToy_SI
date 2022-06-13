@@ -1,6 +1,5 @@
 import copy
 import math
-import random
 
 from playerAgent import Player
 from game import convert_index_to_coordinates, get_possible_moves, convert_coordinates_to_index
