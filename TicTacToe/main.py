@@ -1,6 +1,9 @@
+import numpy
+
 from game import Game
 
 from minmaxRandomAgent import MinMaxRandomAgent
+from neuronNetworkAgent import NeuronNetworkAgent
 from playerAgent import Player
 from randomAgent import RandomAgent
 from minmaxAgent import MinMaxAgent
