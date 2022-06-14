@@ -1,0 +1,1 @@
+{"num_inputs": 25, "num_outputs": 1, "hidden_dims": [25, 25], "activation_fcn": "softmax", "learning_rate": 0.01}

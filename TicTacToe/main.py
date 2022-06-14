@@ -16,15 +16,16 @@ if __name__ == '__main__':
 
     #       Prepare player 1
     # playerX = Player('X')
-    # playerX = MinMaxAgent('X', in_row_to_win, 2)
-    # playerX = RandomAgent("X")
+    #playerX = MinMaxAgent('X', in_row_to_win, 2)
+    #playerX = RandomAgent("X")
     # playerX = MinMaxRandomAgent("X", in_row_to_win, 2)
     playerX = NeuronNetworkAgent("X")
 
     #      Prepare player 2
     # playerO = Player('O')
     # playerO = MinMaxAgent('O', in_row_to_win, 2)
-    playerO = RandomAgent("O")
+    playerO = NeuronNetworkAgent("O")
+    # playerO = RandomAgent("O")
 
     game = Game(map_size, in_row_to_win, ' ')
     game.set_players(playerX, playerO)

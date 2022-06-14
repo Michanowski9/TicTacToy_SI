@@ -44,10 +44,10 @@ def train(model, train_data, valid_data=None, exp_dir='exp_00'):
     # training
     if valid_data is None:
         history = model.fit(x=x, y=y, batch_size=64, validation_split=0.2,
-                            epochs=250, verbose=1, callbacks=[es_cbk, ckp_cbk, tb_cbk])
+                            epochs=100, verbose=1, callbacks=[es_cbk, ckp_cbk, tb_cbk])
     else:
         history = model.fit(x=x, y=y, batch_size=64, validation_data=valid_data,
-                            epochs=250, verbose=1, callbacks=[es_cbk, ckp_cbk, tb_cbk])
+                            epochs=100, verbose=1, callbacks=[es_cbk, ckp_cbk, tb_cbk])
 
     return model, history
 

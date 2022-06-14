@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # save terminal output
     original_stdout = sys.stdout
 
-    number_of_games_to_generate = 200
+    number_of_games_to_generate = 5000
 
     with open('train_data.txt', 'w') as f:
         for i in range(number_of_games_to_generate):
