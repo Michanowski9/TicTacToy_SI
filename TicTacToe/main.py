@@ -18,7 +18,8 @@ if __name__ == '__main__':
     # playerX = Player('X')
     # playerX = MinMaxAgent('X', in_row_to_win, 2)
     # playerX = RandomAgent("X")
-    playerX = MinMaxRandomAgent("X", in_row_to_win, 2)
+    # playerX = MinMaxRandomAgent("X", in_row_to_win, 2)
+    playerX = NeuronNetworkAgent("X")
 
     #      Prepare player 2
     # playerO = Player('O')
