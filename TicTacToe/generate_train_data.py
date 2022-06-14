@@ -32,6 +32,7 @@ if __name__ == '__main__':
             # printing to file
             result = 1 if (game.result == playerX.get_token()) else 0
             for map in playerX.maps:
+
                 print(map, end="")
                 print(":" + str(result))
 
